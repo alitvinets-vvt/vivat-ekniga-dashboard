@@ -21,11 +21,21 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-## Деплой на Streamlit Community Cloud
+## Деплой на Railway
 
-1. Залити цей репозиторій на GitHub.
-2. Зайти на [share.streamlit.io](https://share.streamlit.io) через GitHub-акаунт.
-3. **New app** → обрати репозиторій, гілку `main`, файл `app.py` → **Deploy**.
+1. [railway.app](https://railway.app) → **New Project** → **Deploy from GitHub repo** → обрати цей репозиторій.
+2. Railway сам зчитає `railway.json` і `requirements.txt` — нічого налаштовувати не треба.
+3. Коли білд завершиться: **Settings → Networking → Generate Domain** — це і буде публічне посилання.
+
+Корисне:
+- healthcheck `/_stcore/health` уже прописаний, тому Railway коректно визначає готовність застосунку;
+- щоб закрити доступ лише для своїх, додайте у **Variables** змінні і увімкніть у Railway захист паролем
+  (або поставте проксі з Basic Auth);
+- оновлення: будь-який `git push` у `main` автоматично перезбирає застосунок.
+
+## Альтернатива: Streamlit Community Cloud
+
+[share.streamlit.io](https://share.streamlit.io) → **New app** → репозиторій, гілка `main`, файл `app.py` → **Deploy**.
 
 ## Джерела
 
